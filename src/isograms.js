@@ -5,15 +5,14 @@
 //         return false;
 // }
 
-// module.exports = forEmptyString;
 
 
-function sortChars(word){
-    let arraySplit = word.split('');
-    let arraySort = arraySplit.sort();
-    let arrayJoin = arraySplit.join('');
-        return arrayJoin;
-}
+// function sortChars(input){
+//     let arraySplit = input.split('');
+//     let arraySort = arraySplit.sort();
+//     let arrayJoin = arraySplit.join('');
+//         return arrayJoin;
+// }
 
 function isIsogram(word) {
     let x = 0;
