@@ -1,18 +1,4 @@
-// function forEmptyString(string){
-//     if (string == "")
-//         return true;
-//     else
-//         return false;
-// }
 
-
-
-// function sortChars(input){
-//     let arraySplit = input.split('');
-//     let arraySort = arraySplit.sort();
-//     let arrayJoin = arraySplit.join('');
-//         return arrayJoin;
-// }
 
 function isIsogram(word) {
     let x = 0;

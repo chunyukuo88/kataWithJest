@@ -1,14 +1,16 @@
 
 //This function takes an array of words as an argument.
 function empowerLittles(sentence) {
-
-    for (let i = 0 ; i < sentence.length ; i++) {
-        if (sentence[i].length < 4)
-            sentence[i] = sentence[i].toUpperCase();
+    words = sentence.split(' ');
+    for (let i = 0 ; i < words.length ; i++) {
+        if (words[i].length < 4)
+        words[i] = words[i].toUpperCase();
         else
-            sentence[i] = sentence[i].replace(/[aeiou]/ig , "");
+        words[i] = words[i].replace(/[aeiou]/ig , "");
     }
+    sentence = words.join(' ');
 
+    console.log(sentence);
     return sentence;
 }
 
