@@ -13,3 +13,4 @@ function christmasTree(height) {
     return result;
 }
 
+christmasTree(4);
