@@ -26,10 +26,10 @@ describe('Valid cases', () => {
         expect(result).toBe('Word1');
     })
 
-    it('increments a string that contains both letters & numbers', ()=>{
-        const input = 'Word99';
+    it('increments a string with both letters & numbers but no leading zeroes', ()=>{
+        const input = 'Word299';
         const result = incrementString(input);
-        expect(result).toBe('Word100');
+        expect(result).toBe('Word300');
     })
 
 })

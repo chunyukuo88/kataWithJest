@@ -43,14 +43,18 @@ function lettersAndNumbersIncrement(inputString){
     let numberComponent = '';
     for (let index = 0; index < inputArray.length; index++) {
         const element = inputArray[index];
-        if(element === '0' || parseInt(element, 10)*0 === 0)
+        if(element === '0')
+            letterComponent += element;
+        else if (parseInt(element, 10)*0 === 0)
             numberComponent += element;
         else
             letterComponent += element;
     }
     numberComponent = parseInt(numberComponent) + 1;
+    let tobeAppendedToLetterComponent = numberComponent + '';
 
-    return letterComponent + numberComponent.toString();
+    console.log(letterComponent + tobeAppendedToLetterComponent);
+    return letterComponent + tobeAppendedToLetterComponent;
 }
 
 module.exports = {incrementString, 
