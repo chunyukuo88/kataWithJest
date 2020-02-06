@@ -32,6 +32,12 @@ describe('Valid cases', () => {
         expect(result).toBe('Word300');
     })
 
+    it('increments a string with letters & numbers which may include leading zeroes', ()=>{
+        const input = 'Word99';
+        const result = incrementString(input);
+        expect(result).toBe('Word100');
+    })
+
 })
 
 describe('Can produce separate strings if input contains both letters and numbers', ()=> {
