@@ -11,7 +11,7 @@ function produceMultiples(integer){
     return result;
 }
 
-function pronic(integer){
+function isPronic(integer){
     let isPronic = false;
     if (integer === 0){
         isPronic = true;
@@ -20,11 +20,22 @@ function pronic(integer){
         return isPronic;
     } else {
         let multiples = produceMultiples(integer);
-        for (let index = 0; index < multiples.length; index++) {
-            const element = multiples[index];
-            if (element * multiples[index-1] === integer || element * multiples[index+1] === integer){
-                isPronic = true;
-                break;
+        if (multiples.length === 2 && multiples[1] - multiples[0] === 1){
+            isPronic = true;
+            return isPronic;
+        } else if (multiples.length === 2 && multiples[1] - multiples[0] !== 1) {
+            return isPronic;
+        } else {
+            for (let index = 0; index < multiples.length; index++) {
+                const element = multiples[index];
+                const oneLess = multiples[index-1];
+                const oneMore = multiples[index+1];
+
+                if ((element * oneLess === integer && element-oneLess === 1) || 
+                    (element * oneMore === integer && oneMore-element === 1)){
+                    isPronic = true;
+                    break;
+                }
             }
         }
         return isPronic;
