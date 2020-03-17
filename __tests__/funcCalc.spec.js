@@ -1,4 +1,4 @@
-import {one, plus} from '../src/funcCalc';
+import {one, two, plus} from '../src/funcCalc';
 // const one = require('../src/funcCalc');
 
 describe('Where only one function is invoked at a time.', ()=> {
@@ -7,11 +7,11 @@ describe('Where only one function is invoked at a time.', ()=> {
             expect(one()).toEqual(1);
         });
     });
-    // describe('When multiple functions exist in funcCalc.js.', ()=>{
-    //     it('returns the value of two() when no arguments are passed to it.', ()=>{
-    //         expect(two()).toEqual(2);
-    //     })
-    // })
+    describe('When multiple functions exist in funcCalc.js.', ()=>{
+        it('returns the value of two() when no arguments are passed to it.', ()=>{
+            expect(two()).toEqual(2);
+        })
+    })
 
 });
    
