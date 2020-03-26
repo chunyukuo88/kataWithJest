@@ -4,9 +4,28 @@ function moreZeroes(stringInput){
     let result = [];
     for (let index = 0; index < inputAsArray.length; index++) {
         const element = inputAsArray[index];
-        if(asciiToBinary.has(element) === true && result.includes(element) === false)
+        if(asciiToBinary.has(element) === true && 
+           result.includes(element) === false &&
+           checkIfMoreZeroes(element) === true)
             result.push(element);
     }
+    return result;
+}
+
+function checkIfMoreZeroes(singleCharacter){
+    let numberOfZeroes = 0;     
+    let numberOfOnes = 0;
+    let bitArray = asciiToBinary.get(singleCharacter).split('');
+
+    for (let index = 0; index < bitArray.length; index++) {
+        const element = bitArray[index];
+        if (element === '0')
+            numberOfZeroes++;
+        else
+            numberOfOnes++;
+    }
+
+    let result = numberOfZeroes > numberOfOnes ? true : false;
     return result;
 }
 

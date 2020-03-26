@@ -8,4 +8,9 @@ describe('Return array of chars w/o repeats or cases' +
         const result = moreZeroes(input);
         expect(result).toEqual(['a']);
     });
+    it('returns an array with lessZeroes chars removed.',()=>{
+        const input = 'aaac';
+        const result = moreZeroes(input);
+        expect(result).toEqual(['a']);
+    });
 });
