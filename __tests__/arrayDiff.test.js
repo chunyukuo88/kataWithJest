@@ -23,10 +23,10 @@ describe('When one of the arrays is empty.', ()=>{
 describe('When neither array is empty.', ()=>{
     describe('It returns an array with the elements common to A and B removed.', ()=>{
         it('produces an array with only the unique value or values.', ()=>{
-            const A = [3, 4];
-            const B = [3];
+            const A = [3, 4, 5, 6];
+            const B = [3, 6];
             output = arrayDiff(A, B);
-            expectedResult = [4];
+            expectedResult = [4, 5];
             expect(output).toEqual(expectedResult);
         });
     });
