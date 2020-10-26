@@ -7,6 +7,11 @@ describe('toCamelCase()', ()=>{
       const expectedResult = 'oneTwoThree';
       const result = camelCase.toCamelCase(inputString);
       expect(result).toEqual(expectedResult);
+
+      const input = 'One-two-three';
+      const expected = 'OneTwoThree';
+      const res = camelCase.toCamelCase(input);
+      expect(res).toEqual(expected);
     });
   });
 });
@@ -45,7 +50,7 @@ describe('capitalizeFirstLetterOfElements()', ()=>{
     test('THEN: Capitalize the first letter of each string.', ()=>{
       const arr = ['one', 'two', 'three'];
       const expectedResult = ['One', 'Two', 'Three'];
-      const result = camelCase.capitalizeFirstLetters(arr);
+      const result = camelCase.capitalizeWordsInArray(arr);
       expect(result).toEqual(expectedResult);
     });
   });
