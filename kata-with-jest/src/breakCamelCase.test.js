@@ -1,15 +1,6 @@
 import * as functions from './breakCamelCase';
 
 describe('breakCamelCase.js', ()=>{
-  describe('splitStringIntoArray()', ()=> {
-    describe('WHEN: Given a string,', ()=>{
-      test('THEN: It returns an array of each of the string"s chars.', ()=> {
-        const result = functions.splitStringIntoArray('string');
-        const expectedResult = ['s', 't', 'r', 'i', 'n', 'g'];
-        expect(result).toEqual(expectedResult);
-      });
-    })
-  });
   describe('addSpaceIfUppercase()', ()=> {
     describe('WHEN: Given an uppercase char,', ()=>{
       test('THEN: It adds a space to the char.', ()=> {
