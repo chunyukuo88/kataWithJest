@@ -13,7 +13,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "node scripts/test.js --testMatch '**/src/*.test.js'",
+    "coverage": "jest --coverage --colors --silent --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

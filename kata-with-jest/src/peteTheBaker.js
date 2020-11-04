@@ -1,35 +1,26 @@
 //Source:
 //https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript
 
-/**
- Target function:
+/** Note: The function name 'cakes' is not semantic but is required by the kata spec on Codewars. */
+export const cakes = (needs, has) => (!canMakeAtLeastOne(needs, has)) ? 0 : calculatePossibleCakes(needs, has);
 
- * */
-
-export function cakes(recipe, available) {
-  return (!canMakeAtLeastOne(recipe, available))
-    ? 0
-    : compareAmounts(recipe, available);
-}
-
-export function compareAmounts(recipe, available) {
-  const cakesInTermsOfIngredients = [];
-  Object.keys(recipe).forEach(ingredient => {
-    const cakesPerIngredient = Math.floor((available[ingredient] / recipe[ingredient]));
-    cakesInTermsOfIngredients.push(cakesPerIngredient);
+export function calculatePossibleCakes(needs, has) {
+  const ratios = [];
+  Object.keys(needs).map(ingredient => {
+    const ratio = Math.floor((has[ingredient] / needs[ingredient]));
+    ratios.push(ratio);
   });
-  const result = Math.min(...cakesInTermsOfIngredients);
-  return result;
+  return Math.min(...ratios);
 }
 
-export function canMakeAtLeastOne(recipe, available) {
+export function canMakeAtLeastOne(needs, has) {
   let hasEnoughForOne = true;
-  for (const ingredient in recipe) {
-    if (!available.hasOwnProperty(ingredient)) {
+  for (const ingredient in needs) {
+    if (!has.hasOwnProperty(ingredient)) {
       hasEnoughForOne = false;
       break;
     }
-    if (available[ingredient] < recipe[ingredient]) {
+    if (has[ingredient] < needs[ingredient]) {
       hasEnoughForOne = false;
       break;
     };

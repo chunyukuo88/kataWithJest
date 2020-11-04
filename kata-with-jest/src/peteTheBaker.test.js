@@ -11,8 +11,6 @@ describe('peteTheBaker.js', ()=>{
         expect(result).toEqual(expectedResult);
       });
     });
-  });
-  describe('cakes()', ()=>{
     describe('WHEN: Pete has enough ingredients to make one cake', ()=> {
       test('THEN: It returns the number of cakes he can make.', ()=>{
         const recipe =    { a: 1, b: 1, c: 3 };
@@ -23,17 +21,19 @@ describe('peteTheBaker.js', ()=>{
       });
     });
   });
+
   describe('compareAmounts()', ()=>{
     describe('WHEN: Pete has enough ingredients to make one cake', ()=>{
       test('THEN: It returns the number of cakes he can make', ()=>{
         const recipe =    { a: 1, b: 1, c: 1};
-        const available = { a: 2, b: 2, c: 3};
-        const result = functions.compareAmounts(recipe, available);
-        const expectedResult = 2;
+        const available = { a: 2, b: 1, c: 3};
+        const result = functions.calculatePossibleCakes(recipe, available);
+        const expectedResult = 1;
         expect(result).toEqual(expectedResult);
       });
     });
   });
+
   describe('checkForIngredientAvailability()', ()=>{
     describe('WHEN: Pete has the ingredients to make at least one batch of the recipe,', ()=>{
       test('THEN: It returns the boolean true, meaning the recipe can be made.', ()=>{
