@@ -6,7 +6,7 @@ export const cakes = (needs, has) => (!canMakeAtLeastOne(needs, has)) ? 0 : calc
 
 export function calculatePossibleCakes(needs, has) {
   const ratios = [];
-  Object.keys(needs).map(ingredient => {
+  Object.keys(needs).forEach(ingredient => {
     const ratio = Math.floor((has[ingredient] / needs[ingredient]));
     ratios.push(ratio);
   });
