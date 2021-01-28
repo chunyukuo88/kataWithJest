@@ -27,12 +27,7 @@ const isCharacterALetter = char => {
 const pigLatinize = (input) => {
     const userInputAsArray = input.split('');
     //Add functionality for vowels, multiple consonants, etc..
-    //Consider functionality for two-letter words like 'it', 'id', etc.
     const count = countNumberOfInitialConsonants(userInputAsArray);
-    // const consonantPlusAy = userInputAsArray[0] + 'ay';
-    // userInputAsArray.splice(0, 1);
-    // userInputAsArray.push(consonantPlusAy);
-    // const result = userInputAsArray.join('');
     const result = latinizeBasedOnConsonantCount(userInputAsArray, count);
     return result;
 };

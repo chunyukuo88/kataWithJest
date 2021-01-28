@@ -21,6 +21,12 @@ describe('pigLatin.js', ()=>{
                 const expectedResult = 'oonerschay';
                 expect(result).toBe(expectedResult);
             });
+            test('AND: The string starts with four consecutive consonants,', ()=>{
+                const input = 'syllable';
+                const result = pigLatinConverter(input);
+                const expectedResult = 'ablesyllay';
+                expect(result).toBe(expectedResult);
+            });
             test('AND: The string starts with a vowel,', ()=>{
 
             });
