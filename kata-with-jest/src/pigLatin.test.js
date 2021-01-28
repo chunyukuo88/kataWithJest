@@ -10,13 +10,16 @@ describe('pigLatin.js', ()=>{
                 expect(result).toBe(expectedResult);
             });
             test('AND: The string starts with two consecutive consonants,', ()=>{
-                // const input = 'cloud';
-                // const result = pigLatinConverter(input);
-                // const expectedResult = 'oudclay';
-                // expect(result).toBe(expectedResult);
+                const input = 'clues';
+                const result = pigLatinConverter(input);
+                const expectedResult = 'uesclay';
+                expect(result).toBe(expectedResult);
             });
             test('AND: The string starts with three consecutive consonants,', ()=>{
-
+                const input = 'schooner';
+                const result = pigLatinConverter(input);
+                const expectedResult = 'oonerschay';
+                expect(result).toBe(expectedResult);
             });
             test('AND: The string starts with a vowel,', ()=>{
 

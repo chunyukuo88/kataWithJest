@@ -22,15 +22,50 @@ const inputIsWord = (input) => {
 
 const isCharacterALetter = char => {
     return (/[a-zA-Z]/).test(char);
-}
+};
+
 const pigLatinize = (input) => {
     const userInputAsArray = input.split('');
-    //Add functionality for vowels, etc.
-    const consonantPlusAy = userInputAsArray[0] + 'ay';
-    userInputAsArray.splice(0, 1);
-    userInputAsArray.push(consonantPlusAy);
-    const result = userInputAsArray.join('');
+    //Add functionality for vowels, multiple consonants, etc..
+    //Consider functionality for two-letter words like 'it', 'id', etc.
+    const count = countNumberOfInitialConsonants(userInputAsArray);
+    // const consonantPlusAy = userInputAsArray[0] + 'ay';
+    // userInputAsArray.splice(0, 1);
+    // userInputAsArray.push(consonantPlusAy);
+    // const result = userInputAsArray.join('');
+    const result = latinizeBasedOnConsonantCount(userInputAsArray, count);
     return result;
+};
+
+const latinizeBasedOnConsonantCount = (arr, count) => {
+    const consonantsToBeMoved = []
+    for (let i = 0; i < count; i++) {
+        consonantsToBeMoved.push(arr[i]);
+    };
+    for (let i = 0; i < count; i++) {
+        arr.splice(0, 1);
+    };
+    const clippedArr = arr.join('')
+    const combinedConsonantsToBeMoved = consonantsToBeMoved.join('');
+    const result = clippedArr + combinedConsonantsToBeMoved + 'ay';
+    return result;
+};
+
+const countNumberOfInitialConsonants = arr => {
+    let numberOfInitialConsonants = 0;
+    for (let letter of arr) {
+       if (!isLetterAConsonant(letter)) {
+           numberOfInitialConsonants++;
+       }
+        if (isLetterAConsonant(letter)) {
+            break;
+        };
+    };
+   return numberOfInitialConsonants;
+};
+
+const isLetterAConsonant = letter => {
+    return (/[aeiou]/).test(letter);
 };
 
 export const invalidInputMessage = 'Please enter an ordinary word consisting of Latin letters only.'
