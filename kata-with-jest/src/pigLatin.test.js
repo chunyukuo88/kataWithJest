@@ -39,10 +39,16 @@ describe('pigLatin.js', ()=>{
                 const expectedResult = 'earyay';
                 expect(result).toBe(expectedResult);
             });
-            test('AND: The string starts with the letters "qu" or "squ",', ()=>{
+            test('AND: The string starts with the letters "squ",', ()=>{
                 const input = 'squish';
                 const result = convertToPigLatin(input);
                 const expectedResult = 'ishsquay';
+                expect(result).toBe(expectedResult);
+            });
+            test('AND: The string starts with the letters "qu",', ()=>{
+                const input = 'quiz';
+                const result = convertToPigLatin(input);
+                const expectedResult = 'izquay';
                 expect(result).toBe(expectedResult);
             });
         });

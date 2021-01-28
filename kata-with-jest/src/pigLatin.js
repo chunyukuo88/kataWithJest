@@ -1,12 +1,7 @@
 export const convertToPigLatin = input => {
     const inputIsValid = checkInputValidity(input);
-    let wordIsSpecialCase = false;
-    if (inputIsValid) {
-        wordIsSpecialCase = checkIfWordIsSpecialCase(input);
-    }
-    if (wordIsSpecialCase) {
-        return convertSpecialCase(input);
-    }
+    const wordIsSpecialCase = checkIfWordIsSpecialCase(inputIsValid, input);
+    if (wordIsSpecialCase) return convertSpecialCase(input);
     return (inputIsValid)
             ? pigLatinize(input)
             : invalidInputMessage;
@@ -18,10 +13,12 @@ const checkInputValidity = (input) => {
     return true;
 };
 
-const checkIfWordIsSpecialCase = (word) => {
-    const inputAsArr = word.split('');
-    if (inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u') return true;
-    if (inputAsArr[0] === 'q' && inputAsArr[1] === 'u') return true;
+const checkIfWordIsSpecialCase = (inputIsValid, word) => {
+    if (inputIsValid) {
+        const inputAsArr = word.split('');
+        if (inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u') return true;
+        if (inputAsArr[0] === 'q' && inputAsArr[1] === 'u') return true;
+    }
     return false;
 };
 
