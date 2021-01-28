@@ -28,7 +28,10 @@ describe('pigLatin.js', ()=>{
                 expect(result).toBe(expectedResult);
             });
             test('AND: The string starts with a vowel,', ()=>{
-
+                const input = 'ear';
+                const result = pigLatinConverter(input);
+                const expectedResult = 'earyay';
+                expect(result).toBe(expectedResult);
             });
         });
         describe('WHEN: Given an invalid input,', ()=>{
@@ -40,9 +43,17 @@ describe('pigLatin.js', ()=>{
                     expect(result).toBe(expectedResult);
                 });
             });
+            describe('AND: And the input contains no Latin characters,', ()=>{
+                test('THEN: It returns the invalid input error message,', ()=>{
+                    const input = 'ジェットスキー'; // Japanese spelling of jet ski, since it is a Kawasaki brand.
+                    const result = pigLatinConverter(input);
+                    const expectedResult = invalidInputMessage;
+                    expect(result).toBe(expectedResult);
+                });
+            });
             describe('WHEN: And the input a string but does not consist entirely of Latin letters,', ()=>{
                 test('THEN: It returns the invalid input error message,', ()=>{
-                    const input = '===';
+                    const input = 'sc#=a!*&';
                     const result = pigLatinConverter(input);
                     const expectedResult = invalidInputMessage;
                     expect(result).toBe(expectedResult);
