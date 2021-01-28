@@ -1,8 +1,15 @@
-export const pigLatinConverter = input => {
+export const convertToPigLatin = input => {
     const inputIsValid = checkInputValidity(input);
+    let wordIsSpecialCase = false;
+    if (inputIsValid) {
+        wordIsSpecialCase = checkIfWordIsSpecialCase(input);
+    }
+    if (wordIsSpecialCase) {
+        return convertSpecialCase(input);
+    }
     return (inputIsValid)
-        ? pigLatinize(input)
-        : invalidInputMessage;
+            ? pigLatinize(input)
+            : invalidInputMessage;
 };
 
 const checkInputValidity = (input) => {
@@ -10,6 +17,30 @@ const checkInputValidity = (input) => {
     if (!inputIsWord(input)) return false;
     return true;
 };
+
+const checkIfWordIsSpecialCase = (word) => {
+    const inputAsArr = word.split('');
+    if (inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u') return true;
+    if (inputAsArr[0] === 'q' && inputAsArr[1] === 'u') return true;
+    return false;
+};
+
+const convertSpecialCase = (input) => {
+    const inputAsArr = input.split('');
+    if (inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u') {
+        inputAsArr.splice(0, 1);
+        inputAsArr.splice(0, 1);
+        inputAsArr.splice(0, 1);
+        const clippedArr = inputAsArr.join('');
+        return clippedArr + 'squay';
+    }
+    if (inputAsArr[0] === 'q' && inputAsArr[1] === 'u') {
+        inputAsArr.splice(0, 1);
+        inputAsArr.splice(0, 1);
+        const clippedArr = inputAsArr.join('');
+        return clippedArr + 'quay';
+    }
+}
 
 const inputIsWord = (input) => {
     const userInputAsArray = input.split('');
@@ -53,16 +84,12 @@ const appendWithOrWithoutInitialConsonants = (combinedConsonantsToBeMoved, clipp
 const countNumberOfInitialConsonants = arr => {
     let numberOfInitialConsonants = 0;
     for (let letter of arr) {
-        if (!isLetterAConsonant(letter)) {
-            numberOfInitialConsonants++;
-        }
-        if (isLetterAConsonant(letter)) {
-            break;
-        };
+        if (!isLetterAVowel(letter)) numberOfInitialConsonants++;
+        if (isLetterAVowel(letter)) break;
     };
    return numberOfInitialConsonants;
 };
 
-const isLetterAConsonant = letter => (/[aeiou]/).test(letter);
+const isLetterAVowel = letter => (/[aeiou]/).test(letter);
 
 export const invalidInputMessage = 'Please enter an ordinary word consisting of Latin letters only.'
