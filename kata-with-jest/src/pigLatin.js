@@ -15,11 +15,14 @@ const inputIsWord = (input) => {
     const userInputAsArray = input.split('');
     let inputIsWord = true;
     userInputAsArray.forEach(char => {
-        if (char !== /[a-z]/i) inputIsWord = false;
+        if (!isCharacterALetter(char)) inputIsWord = false;
     })
     return inputIsWord;
 };
 
+const isCharacterALetter = char => {
+    return (/[a-zA-Z]/).test(char);
+}
 const pigLatinize = (input) => {
     const userInputAsArray = input.split('');
     //Add functionality for vowels, etc.
