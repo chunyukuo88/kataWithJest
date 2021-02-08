@@ -5,20 +5,49 @@ export function topThreeWords(text) {
     const inputAsArray = text.split(' ');
     const uniqueWords = [];
     const wordsWithFreqs = [];
+    const regex = new RegExp('[a-z]');
     inputAsArray.forEach(word => {
-        populateFrequencyObject(word, uniqueWords, wordsWithFreqs)
+        if (regex.test(word.toLowerCase())){
+            const cleanedWord = removeInvalidPunctuation(word);
+            populateFrequencyObject(cleanedWord, uniqueWords, wordsWithFreqs)
+        }
     });
-    const wordsByFrequency = getWordsByFrequency(wordsWithFreqs);
-    return wordsByFrequency;
+    if (uniqueWords.length > 0) {
+        const wordsByFrequency = getWordsByFrequency(wordsWithFreqs, uniqueWords.length);
+        return wordsByFrequency;
+    } else {
+        return [];
+    }
 };
 
-const getWordsByFrequency = (wordsWithFreqs) => {
+const removeInvalidPunctuation = (word) => {
+    const invalidPunctuation = new RegExp('[.!?/-]');
+    const wordAsArray = word.split('');
+    const cleanedUpWordAsArray = [];
+    wordAsArray.forEach(char => {
+       if (!invalidPunctuation.test(char)) cleanedUpWordAsArray.push(char);
+    });
+    return cleanedUpWordAsArray.join('');
+}
+
+const getWordsByFrequency = (wordsWithFreqs, numberOfUniqueWords) => {
     const sortedArray = wordsWithFreqs.sort((a, b) => b[1]- a[1]);
-    const topThree = [];
-    topThree.push(sortedArray[0][0]);
-    topThree.push(sortedArray[1][0]);
-    topThree.push(sortedArray[2][0]);
-    return topThree;
+    if (numberOfUniqueWords > 2){
+        const topThree = [];
+        topThree.push(sortedArray[0][0]);
+        topThree.push(sortedArray[1][0]);
+        topThree.push(sortedArray[2][0]);
+        return topThree;
+    }
+    if (numberOfUniqueWords === 2){
+        const topTwo = [];
+        topTwo.push(sortedArray[0][0]);
+        topTwo.push(sortedArray[1][0]);
+        return topTwo;
+    }
+    if (numberOfUniqueWords === 1){
+        return [sortedArray[0][0]];
+    }
 }
 
 const populateFrequencyObject = (w, uniqueWords, wordsWithFreqs) => {
@@ -35,6 +64,3 @@ const populateFrequencyObject = (w, uniqueWords, wordsWithFreqs) => {
         wordsWithFreqs.push(wordPair);
     };
 };
-
-
-topThreeWords("A A A AND AND THE");
