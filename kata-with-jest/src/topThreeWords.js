@@ -3,22 +3,24 @@
 
 export function topThreeWords(text) {
     const inputAsArray = text.split(' ');
+    const { uniqueWords, wordsWithFreqs } = produceUniqueWordsAndFrequencies(inputAsArray);
+    if (uniqueWords.length > 0)
+        return getWordsByFrequency(wordsWithFreqs, uniqueWords.length);
+    return [];
+};
+
+const produceUniqueWordsAndFrequencies = (arrayOfWords) => {
     const uniqueWords = [];
     const wordsWithFreqs = [];
-    const regex = new RegExp('[a-z]');
-    inputAsArray.forEach(word => {
-        if (regex.test(word.toLowerCase())){
+    const latinLetters = new RegExp('[a-z]');
+    arrayOfWords.forEach(word => {
+        if (latinLetters.test(word.toLowerCase())){
             const cleanedWord = removeInvalidPunctuation(word);
             populateFrequencyObject(cleanedWord, uniqueWords, wordsWithFreqs)
         }
     });
-    if (uniqueWords.length > 0) {
-        const wordsByFrequency = getWordsByFrequency(wordsWithFreqs, uniqueWords.length);
-        return wordsByFrequency;
-    } else {
-        return [];
-    }
-};
+    return { uniqueWords, wordsWithFreqs };
+}
 
 const removeInvalidPunctuation = (word) => {
     const invalidPunctuation = new RegExp('[.!?/-]');
