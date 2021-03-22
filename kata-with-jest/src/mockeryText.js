@@ -10,9 +10,9 @@ export default function convertToMockeryText(inputString) {
 };
 
 const processIndividualWord = (word, output) => {
-  const inputAsArray = capitalizeFirstLetterOfInput(word);
-  const mockeryOutputAsArray = prepOutputAsArray(inputAsArray);
-  capitalizeEveryOtherLetter(inputAsArray, mockeryOutputAsArray);
+  const wordAsArray = capitalizeFirstLetterOfInput(word);
+  const mockeryOutputAsArray = prepOutputAsArray(wordAsArray);
+  capitalizeEveryOtherLetter(wordAsArray, mockeryOutputAsArray);
   const modifiedWord = mockeryOutputAsArray.join('');
   output.push(modifiedWord);
 };
@@ -23,16 +23,20 @@ const prepOutputAsArray = (inputAsArray) => {
   return mockeryOutputAsArray;
 };
 
-const capitalizeEveryOtherLetter = (inputAsArray, mockeryOutputAsArray) => {
-  for (let i = 1; i < inputAsArray.length; i++) {
-    const previousLetter = mockeryOutputAsArray[i - 1];
-    if (previousLetter !== previousLetter.toUpperCase()) {
-      mockeryOutputAsArray.push(inputAsArray[i].toUpperCase());
-    }
-    if (previousLetter === previousLetter.toUpperCase()) {
-      mockeryOutputAsArray.push(inputAsArray[i].toLowerCase());
-    }
+const capitalizeEveryOtherLetter = (wordAsArray, outputArray) => {
+  for (let i = 1; i < wordAsArray.length; i++) {
+    const currentLetter = wordAsArray[i];
+    (currentLetter === 'i')
+      ? outputArray.push(currentLetter)
+      : processIfLetterI(wordAsArray, i, outputArray, currentLetter);
   }
+};
+
+const processIfLetterI = (wordAsArray, index, outputArray, currentLetter) => {
+  const previousLetter = outputArray[index - 1];
+  (previousLetter === previousLetter.toUpperCase())
+    ? outputArray.push(currentLetter.toLowerCase())
+    : outputArray.push(currentLetter.toUpperCase());
 };
 
 const capitalizeFirstLetterOfInput = (inputString) => {
@@ -41,3 +45,5 @@ const capitalizeFirstLetterOfInput = (inputString) => {
   inputAsArray.splice(1, 1);
   return inputAsArray;
 };
+
+const punctuationSymbols = ['!', '@', '#', '$', '%', '^', '&', '*', ',', '.', '?', '"'];

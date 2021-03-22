@@ -4,9 +4,9 @@ describe('mockeryText.js', ()=>{
   describe('mockeryText()', ()=>{
     describe('GIVEN: A valid string consisting of a single word, ', ()=>{
       it('THEN: It returns the string in mockery text, ', ()=>{
-        const input = 'rabbit';
+        const input = 'robot';
         const result = convertToMockeryText(input);
-        const expectedResult = 'RaBbIt';
+        const expectedResult = 'RoBoT';
         expect(result).toEqual(expectedResult);
       });
     });
@@ -15,6 +15,20 @@ describe('mockeryText.js', ()=>{
         const input = 'facts and logic';
         const result = convertToMockeryText(input);
         const expectedResult = 'FaCtS AnD LoGiC';
+        expect(result).toEqual(expectedResult);
+      });
+      it('THEN: It returns the string in mockery text, and the letter \'i\' is never capitalized.', ()=>{
+        const input = 'Ben Shapiro';
+        const result = convertToMockeryText(input);
+        const expectedResult = 'BeN ShApiRo';
+        expect(result).toEqual(expectedResult);
+      });
+    });
+    xdescribe('GIVEN: A valid string with punctuation, ', ()=>{
+      it('THEN: It returns the string in mockery text, and the letter \'i\' is never capitalized.', ()=>{
+        const input = "Ben Shapiro's facts & logic";
+        const result = convertToMockeryText(input);
+        const expectedResult = 'BeN ShApiRo\'S FaCtS & LoGiC';
         expect(result).toEqual(expectedResult);
       });
     });
