@@ -1,6 +1,7 @@
-// Produces mockery text, the first letter capitalized.
+/** Produces mockery text, the first letter capitalized.
 // Example: 'BeN ShApiRo'S FaCtS & LoGiC'
-// The letters L and I are never capitalized unless they are the first letter.
+// The letter 'i' is never capitalized unless it is the first letter.
+*/
 
 export default function convertToMockeryText(inputString) {
   const inputAsArrayOfWords = inputString.split(' ');
@@ -33,10 +34,17 @@ const capitalizeEveryOtherLetter = (wordAsArray, outputArray) => {
 };
 
 const processIfLetterI = (wordAsArray, index, outputArray, currentLetter) => {
-  const previousLetter = outputArray[index - 1];
+  const previousLetter = getPreviousLetter(outputArray, index);
   (previousLetter === previousLetter.toUpperCase())
     ? outputArray.push(currentLetter.toLowerCase())
     : outputArray.push(currentLetter.toUpperCase());
+};
+
+const getPreviousLetter = (outputArray, index) => {
+  const previousCharacter = outputArray[index - 1];
+  return (punctuationSymbols.includes(previousCharacter))
+    ? outputArray[index - 2]
+    : previousCharacter;
 };
 
 const capitalizeFirstLetterOfInput = (inputString) => {
@@ -46,4 +54,4 @@ const capitalizeFirstLetterOfInput = (inputString) => {
   return inputAsArray;
 };
 
-const punctuationSymbols = ['!', '@', '#', '$', '%', '^', '&', '*', ',', '.', '?', '"'];
+const punctuationSymbols = ['!', '@', '#', '$', '%', '^', '&', '*', ',', '.', '?', '"', '\''];

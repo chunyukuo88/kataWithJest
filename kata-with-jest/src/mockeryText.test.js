@@ -17,14 +17,14 @@ describe('mockeryText.js', ()=>{
         const expectedResult = 'FaCtS AnD LoGiC';
         expect(result).toEqual(expectedResult);
       });
-      it('THEN: It returns the string in mockery text, and the letter \'i\' is never capitalized.', ()=>{
-        const input = 'Ben Shapiro';
+      it('THEN: It returns the string in mockery text, and a non-initial \'i\' is never capitalized.', ()=>{
+        const input = 'iiiz';
         const result = convertToMockeryText(input);
-        const expectedResult = 'BeN ShApiRo';
+        const expectedResult = 'IiiZ';
         expect(result).toEqual(expectedResult);
       });
     });
-    xdescribe('GIVEN: A valid string with punctuation, ', ()=>{
+    describe('GIVEN: A valid string with punctuation, ', ()=>{
       it('THEN: It returns the string in mockery text, and the letter \'i\' is never capitalized.', ()=>{
         const input = "Ben Shapiro's facts & logic";
         const result = convertToMockeryText(input);
