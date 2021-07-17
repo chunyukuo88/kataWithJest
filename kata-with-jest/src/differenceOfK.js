@@ -4,7 +4,7 @@
 * */
 
 export const listPairsOfDeltaK = (arrayOfIntegers, k) => {
-  if (inputsAreInvalid(arrayOfIntegers, k)) return errorMessage;
+  if (arrayOfIntegers.length < 2 | typeof k !== 'number') return errorMessage;
   arrayOfIntegers.sort();
   return producePairs(arrayOfIntegers, k);
 };
@@ -20,10 +20,4 @@ const producePairs = (arrayOfIntegers, k) => {
   return result;
 };
 
-const inputsAreInvalid = (arrayOfIntegers, k) => {
-  if (arrayOfIntegers.length < 2 | typeof k !== 'number') return true;
-  return false;
-};
-
 export const errorMessage = 'One or more of the inputs is invalid.';
-
