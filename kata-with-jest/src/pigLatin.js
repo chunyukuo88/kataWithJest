@@ -8,7 +8,7 @@ export const convertToPigLatin = input => {
 };
 
 const checkInputValidity = (input) => {
-    if (typeof input !== 'string' || input === undefined || input === null) return false;
+    if (typeof input !== 'string') return false;
     if (!inputIsWord(input)) return false;
     return true;
 };
@@ -25,15 +25,12 @@ const checkIfWordIsSpecialCase = (inputIsValid, word) => {
 const convertSpecialCase = (input) => {
     const inputAsArr = input.split('');
     if (inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u') {
-        inputAsArr.splice(0, 1);
-        inputAsArr.splice(0, 1);
-        inputAsArr.splice(0, 1);
+        inputAsArr.splice(0, 3);
         const clippedArr = inputAsArr.join('');
         return clippedArr + 'squay';
     }
     if (inputAsArr[0] === 'q' && inputAsArr[1] === 'u') {
-        inputAsArr.splice(0, 1);
-        inputAsArr.splice(0, 1);
+        inputAsArr.splice(0, 2);
         const clippedArr = inputAsArr.join('');
         return clippedArr + 'quay';
     }
@@ -53,10 +50,8 @@ const isCharacterALetter = char => {
 };
 
 const pigLatinize = (input) => {
-    const userInputAsArray = input.split('');
-    const count = countNumberOfInitialConsonants(userInputAsArray);
-    const result = latinizeBasedOnConsonantCount(userInputAsArray, count);
-    return result;
+    const count = countNumberOfInitialConsonants(input.split(''));
+    return latinizeBasedOnConsonantCount(input.split(''), count);
 };
 
 const latinizeBasedOnConsonantCount = (arr, count) => {

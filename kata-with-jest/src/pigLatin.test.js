@@ -57,40 +57,35 @@ describe('pigLatin.js', ()=>{
                 test('THEN: It returns the invalid input error message,', ()=>{
                     const input = {};
                     const result = convertToPigLatin(input);
-                    const expectedResult = invalidInputMessage;
-                    expect(result).toBe(expectedResult);
+                    expect(result).toBe(invalidInputMessage);
                 });
             });
             describe('AND: And the input contains no Latin characters,', ()=>{
                 test('THEN: It returns the invalid input error message,', ()=>{
                     const input = 'ジェットスキー'; // Japanese spelling of jet ski, since it is a Kawasaki brand.
                     const result = convertToPigLatin(input);
-                    const expectedResult = invalidInputMessage;
-                    expect(result).toBe(expectedResult);
+                    expect(result).toBe(invalidInputMessage);
                 });
             });
             describe('WHEN: And the input a string but does not consist entirely of Latin letters,', ()=>{
                 test('THEN: It returns the invalid input error message,', ()=>{
                     const input = 'sc#=a!*&';
                     const result = convertToPigLatin(input);
-                    const expectedResult = invalidInputMessage;
-                    expect(result).toBe(expectedResult);
+                    expect(result).toBe(invalidInputMessage);
                 });
             });
             describe('WHEN: And the input is null,', ()=>{
                 test('THEN: It returns the invalid input error message,', ()=>{
                     const input = null;
                     const result = convertToPigLatin(input);
-                    const expectedResult = invalidInputMessage;
-                    expect(result).toBe(expectedResult);
+                    expect(result).toBe(invalidInputMessage);
                 });
             });
             describe('WHEN: And the input is undefined,', ()=>{
                 test('THEN: It returns the invalid input error message,', ()=>{
                     const input = undefined;
                     const result = convertToPigLatin(input);
-                    const expectedResult = invalidInputMessage;
-                    expect(result).toBe(expectedResult);
+                    expect(result).toBe(invalidInputMessage);
                 });
             });
         });
