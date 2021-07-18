@@ -6,21 +6,24 @@
  * */
 
 export const findPermutations = (smallString, bigString) => {
-  const smallStringAsArray = smallString.split(''), bigStringAsArray = bigString.split('');
-  const sLength = smallStringAsArray.length, bLength = bigStringAsArray.length;
+  const [smallStringAsArray, bigStringAsArray] = [smallString.split(''), bigString.split('')];
+  const [sLength, bLength] = [smallStringAsArray.length, bigStringAsArray.length];
   const sortedSmallString = sortString(smallString);
+  return getPermutationsAndIndexes(sLength, bLength, bigString,sortedSmallString);
+};
 
-  const permutations = [];
-  const indexes = [];
-  for (let i = 0; i < (bLength - sLength); i++) {
+const getPermutationsAndIndexes = (sLength, bLength, bigString, sortedSmallString) => {
+  const [permutations, indexes] = [[], []];
+  for (let i = 0; i < (bLength - sLength) + 1; i++) {
     const window = bigString.slice(i, sLength + i);
     const sortedWindow = sortString(window);
+    console.log(sortedWindow);
     if (sortedSmallString === sortedWindow) {
       permutations.push(window);
       indexes.push(i);
     }
   }
-  return { permutations, indexes};
+  return { permutations, indexes };
 };
 
 const sortString = (inputString) => {

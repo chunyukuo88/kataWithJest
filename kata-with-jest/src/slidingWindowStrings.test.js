@@ -26,5 +26,18 @@ describe('slidingWindowStrings.js', ()=>{
         });
       })
     });
+    describe('AND: The big string only contains the small strings\' letters plus other letters', ()=>{
+      it('THEN: It returns the permutations and the indexes', ()=>{
+        const smallString = 'abba', bigString = 'abbabaXYZbaab';
+        const expectedResult = {
+          permutations: ['abba', 'baba', 'baab'],
+          indexes: [0, 2, 9],
+        };
+
+        const result = findPermutations(smallString, bigString);
+
+        expect(result).toEqual(expectedResult);
+      });
+    });
   });
 });
