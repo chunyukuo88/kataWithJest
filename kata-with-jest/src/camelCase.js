@@ -6,7 +6,7 @@ export function toCamelCase(str){
     return '';
   const arr = produceStringArray(str);
   const capitalizedArray = capitalizeWordsInArray(arr);
-  let mergedWords = mergeCapitalizedWords(capitalizedArray);
+  let mergedWords = capitalizedArray.join('');
   return resultBasedOnFirstChar(str, mergedWords);
 };
 
@@ -21,24 +21,14 @@ export function produceStringArray(input){
 };
 
 export function capitalizeWordsInArray(arr){
-  const updatedArray = [];
-  arr.forEach(word => {
-    updatedArray.push(capitalizeIndividualWord(word));
-  });
-  return updatedArray;
+  return arr.map(word => capitalizeIndividualWord(word));
 };
 
 export function capitalizeIndividualWord(word){
-  const elementAsArray = word.split('');
-  elementAsArray[0] = elementAsArray[0].toUpperCase();
-  const capitalizedWord = elementAsArray.join('');
-  return capitalizedWord;
+  const firstLetter = word.slice(0, 1);
+  const restOfTheWord = word.slice(1);
+  return firstLetter.toUpperCase() + restOfTheWord;
 }
 
-export function mergeCapitalizedWords(arr){
-  const updatedArray = [];
-  arr.forEach(word =>{
-    updatedArray.push(word);
-  });
-  return updatedArray.join('');
-};
+
+

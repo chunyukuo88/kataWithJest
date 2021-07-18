@@ -45,9 +45,7 @@ const inputIsWord = (input) => {
     return inputIsWord;
 };
 
-const isCharacterALetter = char => {
-    return (/[a-zA-Z]/).test(char);
-};
+const isCharacterALetter = char => (/[a-zA-Z]/).test(char);
 
 const pigLatinize = (input) => {
     const count = countNumberOfInitialConsonants(input.split(''));
@@ -67,11 +65,10 @@ const latinizeBasedOnConsonantCount = (arr, count) => {
     return appendWithOrWithoutInitialConsonants(combinedConsonantsToBeMoved, clippedArr, arr);
 };
 
-const appendWithOrWithoutInitialConsonants = (combinedConsonantsToBeMoved, clippedArr, arr) => {
-    return (combinedConsonantsToBeMoved.length > 0)
-        ? clippedArr + combinedConsonantsToBeMoved + 'ay'
-        : arr.join('') + 'yay';
-};
+const appendWithOrWithoutInitialConsonants = (combinedConsonantsToBeMoved, clippedArr, arr) =>
+  (combinedConsonantsToBeMoved.length > 0)
+    ? clippedArr + combinedConsonantsToBeMoved + 'ay'
+    : arr.join('') + 'yay';
 
 const countNumberOfInitialConsonants = arr => {
     let numberOfInitialConsonants = 0;

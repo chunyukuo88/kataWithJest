@@ -12,9 +12,8 @@ export function topThreeWords(text) {
 const produceUniqueWordsAndFrequencies = (arrayOfWords) => {
     const uniqueWords = [];
     const wordsWithFreqs = [];
-    const latinLetters = new RegExp('[a-z]');
     arrayOfWords.forEach(word => {
-        if (latinLetters.test(word.toLowerCase())){
+        if (/[a-z]/.test(word.toLowerCase())){
             const cleanedWord = removeInvalidPunctuation(word);
             populateFrequencyObject(cleanedWord, uniqueWords, wordsWithFreqs)
         }

@@ -56,13 +56,3 @@ describe('capitalizeFirstLetterOfElements()', ()=>{
   });
 });
 
-describe('mergeCapitalizedWords()', ()=>{
-  describe('WHEN: Given an array of capitalized words,', ()=>{
-    test('THEN: It merges them into a single string.', ()=>{
-      const arr = ['one', 'Two', 'Three'];
-      const expectedResult = 'oneTwoThree';
-      const result = camelCase.mergeCapitalizedWords(arr);
-      expect(result).toEqual(expectedResult);
-    });
-  });
-});
