@@ -1,5 +1,4 @@
 const { log } = console;
-import _ from 'lodash';
 
 export const linearSearch = (list, number) => {
   let result = -1;
@@ -24,4 +23,8 @@ export const bubbleSort = (list) => {
   };
   log(list)
   return list;
+};
+
+export const mergeSort = (list) => {
+
 };

@@ -1,37 +1,29 @@
-import { convert } from './zigzagConversion';
+import { convert, addSpacesToStringArray, produce2DArray } from './zigzagConversion';
 
-describe('convert()', ()=>{
-  describe('WHEN: A string and a number of rows equal to 3,', ()=>{
-    it('THEN: It puts the string into a zigzag pattern.', ()=>{
-      const inputString = "DASBROT"; // "The bread" in German
+
+describe('addSpacesToStringArray()', ()=>{
+  describe('WHEN: A 7-char array and a number of rows equal to 3,', ()=>{
+    it('THEN: The helper function produces a two-dimensional array with the shape of the result.', ()=>{
+      const arr = ['D', 'A', 'S', 'B', 'R', 'O', 'T'];
       const numberOfRows = 3;
-      const expectedResult = "DRABOST";
+      const expectedResult = ['D', 'A', 'S', '_', 'B', '_', 'R', 'O', 'T'];
 
-      const result = convert(inputString, numberOfRows);
+      const result = addSpacesToStringArray(arr, numberOfRows);
 
       expect(result).toEqual(expectedResult);
     });
   });
-  // describe('WHEN: A string and a number of rows equal to 4,', ()=>{
-  //   it('THEN: It puts the string into a zigzag pattern.', ()=>{
-  //     const inputString = "PAYPALISHIRING";
-  //     const numberOfRows = 4;
-  //     const expectedResult = "PINALSIGYAHRPI";
-  //
-  //     const result = convert(inputString, numberOfRows);
-  //
-  //     expect(result).toEqual(expectedResult);
-  //   });
-  // });
-  // describe('WHEN: A character and a number of rows equal to 1,', ()=>{
-  //   it('THEN: It returns that character.', ()=>{
-  //     const inputString = "A";
-  //     const numberOfRows = 1;
-  //     const expectedResult = "A";
-  //
-  //     const result = convert(inputString, numberOfRows);
-  //
-  //     expect(result).toEqual(expectedResult);
-  //   });
-  // });
+  describe('WHEN: A 10-char array and a number of rows equal to 4,', ()=>{
+    it('THEN: The helper function produces the updated string.', ()=>{
+      const arr = [
+        't', 'h', 'e', 'w', 'o', 'o', 'b', 'l', 'e', 'r'
+      ];
+      const numberOfRows = 4;
+      const expectedResult = 'thew__o__obler';
+
+      const result = addSpacesToStringArray(arr, numberOfRows);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
 });

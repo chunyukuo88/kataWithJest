@@ -1,4 +1,7 @@
-import { linearSearch, bubbleSort } from './linearBinaryBubble';
+import {
+  linearSearch,
+  bubbleSort,
+  mergeSort } from './linearBinaryBubble';
 
 describe('linearBinaryBubble.js', ()=>{
   describe('linearSearch()', ()=>{
@@ -42,6 +45,13 @@ describe('linearBinaryBubble.js', ()=>{
         const result = bubbleSort(originalList);
 
         expect(result).toEqual(expectedResult);
+      });
+    });
+  });
+  describe('mergeSort()', ()=>{
+    describe('WHEN: Given a list of numbers, ', ()=>{
+      it('THEN: It sorts them.', ()=>{
+
       });
     });
   });
