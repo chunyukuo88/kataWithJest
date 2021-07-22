@@ -1,20 +1,17 @@
 // https://leetcode.com/problems/zigzag-conversion/
 
 const convert = (s, numRows) => {
-  const stringLength = s.length;
-  const stringAsArray = s.split('');
-  const numberOfColumns = Math.floor(stringLength / numRows);
-  const numberOfDiags = numberOfColumns - 1;
+  const updatedArray = addUnderscoresToString(s, numRows).split('');
   const rows = {};
   for(let i = 0; i < numRows; i++){
     rows[i] = [];
-    rows[i][i] = stringAsArray[i];
+    rows[i][i] = updatedArray[i];
   }
-  console.log(rows);
 };
 
-const addUnderscoresToStringArray = (stringAsArray, numRows) => {
-  let updatedArray = stringAsArray.map(char => char);
+const addUnderscoresToString = (s, numRows) => {
+  const arr = s.split('');
+  let updatedArray = arr.map(char => char);
   let len = updatedArray.length;
   const underscores = getUnderscores(numRows);
   for (let i = (numRows-1); i < len - (numRows); i++) {
@@ -23,12 +20,11 @@ const addUnderscoresToStringArray = (stringAsArray, numRows) => {
     }
   }
   updatedArray = updatedArray.join('');
-  // console.log(updatedArray);
   return updatedArray;
 };
 
 const spliceBasedOnNumberOfRows = (updatedArray, i, underscores, numRows) => {
-  for (let x = 0; x < numRows -1; x++) {
+  for (let x = 0; x < numRows - 1; x++) {
     updatedArray.splice(i + (x * 2), 0, underscores);
   }
 };
@@ -37,7 +33,7 @@ const getUnderscores = (numRows) => {
   let underscores = '';
   let x = 0;
   while (x < numRows - 2) {
-    underscores = underscores + '_';
+    underscores += '_';
     x++;
   }
   return underscores;
@@ -50,7 +46,7 @@ const produce2DArray = (stringAsArray, numRows) => {
   }
 };
 
-export { convert, addUnderscoresToStringArray, produce2DArray };
+export { convert, addUnderscoresToString, produce2DArray };
 
 
 
@@ -61,6 +57,15 @@ export { convert, addUnderscoresToStringArray, produce2DArray };
  l   w   e
  i o     $
  l       $
+
+ maybeitstimefor5
+
+ m         m
+ a       i e
+ y     t   f
+ b   s     o
+ e t       r
+ i         5
 
  *
  *                                      2:0
