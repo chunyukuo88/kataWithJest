@@ -13,14 +13,17 @@ const convert = (s, numRows) => {
   console.log(rows);
 };
 
-const addSpacesToStringArray = (stringAsArray, numRows) => {
+const addUnderscoresToStringArray = (stringAsArray, numRows) => {
   let updatedArray = stringAsArray.map(char => char);
   let len = updatedArray.length;
   const underscores = getUnderscores(numRows);
-  for (let i = (numRows); i < len - (numRows); i++) {
-    if (i % (numRows - 2) === 0) {
-      updatedArray.splice(i, 0, underscores);
-      updatedArray.splice(i+2, 0, underscores);
+  for (let i = (numRows-1); i < len - (numRows); i++) {
+    if (i === numRows) {
+        updatedArray.splice(i + 0, 0, underscores);
+        updatedArray.splice(i + 2, 0, underscores);
+        updatedArray.splice(i + 4, 0, underscores);
+        updatedArray.splice(i + 6, 0, underscores);
+        updatedArray.splice(i + 8, 0, underscores);
     }
   }
   updatedArray = updatedArray.join('');
@@ -45,7 +48,7 @@ const produce2DArray = (stringAsArray, numRows) => {
   }
 };
 
-export { convert, addSpacesToStringArray, produce2DArray };
+export { convert, addUnderscoresToStringArray, produce2DArray };
 
 
 // Instructions:
