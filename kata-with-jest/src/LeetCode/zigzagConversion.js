@@ -19,16 +19,18 @@ const addUnderscoresToStringArray = (stringAsArray, numRows) => {
   const underscores = getUnderscores(numRows);
   for (let i = (numRows-1); i < len - (numRows); i++) {
     if (i === numRows) {
-        updatedArray.splice(i + 0, 0, underscores);
-        updatedArray.splice(i + 2, 0, underscores);
-        updatedArray.splice(i + 4, 0, underscores);
-        updatedArray.splice(i + 6, 0, underscores);
-        updatedArray.splice(i + 8, 0, underscores);
+      spliceBasedOnNumberOfRows(updatedArray, i, underscores, numRows);
     }
   }
   updatedArray = updatedArray.join('');
-  console.log(updatedArray);
+  // console.log(updatedArray);
   return updatedArray;
+};
+
+const spliceBasedOnNumberOfRows = (updatedArray, i, underscores, numRows) => {
+  for (let x = 0; x < numRows -1; x++) {
+    updatedArray.splice(i + (x * 2), 0, underscores);
+  }
 };
 
 const getUnderscores = (numRows) => {
@@ -51,9 +53,14 @@ const produce2DArray = (stringAsArray, numRows) => {
 export { convert, addUnderscoresToStringArray, produce2DArray };
 
 
+
 // Instructions:
 /**
- 3 rows:
+ j       s
+ a     e m
+ l   w   e
+ i o     $
+ l       $
 
  *
  *                                      2:0

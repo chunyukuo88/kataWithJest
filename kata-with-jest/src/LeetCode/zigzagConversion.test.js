@@ -18,20 +18,20 @@ describe('addSpacesToStringArray()', ()=>{
         't', 'h', 'e', 'w', 'o', 'o', 'b', 'l', 'e', 'r'
       ];
       const numberOfRows = 4;
-      const expectedResult = 'thew__o__obler';
+      const expectedResult = 'thew__o__o__bler';
 
       const result = addUnderscoresToStringArray(arr, numberOfRows);
 
       expect(result).toEqual(expectedResult);
     });
   });
-  describe('WHEN: A 14-char array and a number of rows equal to 5,', ()=>{
+  describe('WHEN: A 13-char array and a number of rows equal to 5,', ()=>{
     it('THEN: The helper function produces the updated string.', ()=>{
       const arr = [
-        'j', 'a', 'l', 'i', 'l', 'o', 'w', 'e', 's', 'm', 'e', '$', '$', '$'
+        'j', 'a', 'l', 'i', 'l', 'o', 'w', 'e', 's', 'm', 'e', '$', '$'
       ];
       const numberOfRows = 5;
-      const expectedResult = 'jalil___o___w___e___s___me$$$';
+      const expectedResult = 'jalil___o___w___e___sme$$';
 
       const result = addUnderscoresToStringArray(arr, numberOfRows);
 
