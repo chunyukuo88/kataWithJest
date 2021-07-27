@@ -7,6 +7,8 @@ const convert = (s, numRows) => {
     rows[i] = [];
     rows[i][i] = updatedArray[i];
   }
+  console.log(rows);
+  // Add tests for rows
 };
 
 const addUnderscoresToString = (s, numRows) => {
