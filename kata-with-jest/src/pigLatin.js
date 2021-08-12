@@ -24,17 +24,21 @@ const checkIfWordIsSpecialCase = (inputIsValid, word) => {
 
 const convertSpecialCase = (input) => {
     const inputAsArr = input.split('');
-    if (inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u') {
+    if (wordBeginsWithSQU(inputAsArr)) {
         inputAsArr.splice(0, 3);
         const clippedArr = inputAsArr.join('');
         return clippedArr + 'squay';
     }
-    if (inputAsArr[0] === 'q' && inputAsArr[1] === 'u') {
+    if (wordBeginsWithQU(inputAsArr)) {
         inputAsArr.splice(0, 2);
         const clippedArr = inputAsArr.join('');
         return clippedArr + 'quay';
     }
 }
+
+const wordBeginsWithSQU = (inputAsArr) => inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u';
+
+const wordBeginsWithQU = (inputAsArr) => inputAsArr[0] === 'q' && inputAsArr[1] === 'u';
 
 const inputIsWord = (input) => {
     const userInputAsArray = input.split('');
@@ -81,4 +85,4 @@ const countNumberOfInitialConsonants = arr => {
 
 const isLetterAVowel = letter => (/[aeiou]/).test(letter);
 
-export const invalidInputMessage = 'Please enter an ordinary word consisting of Latin letters only.'
+export const invalidInputMessage = 'Please enter an unhyphenated word consisting of Latin letters only.'
