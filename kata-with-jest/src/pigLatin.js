@@ -1,11 +1,11 @@
 export const convertToPigLatin = input => {
     const inputIsValid = checkInputValidity(input);
-    const wordIsSpecialCase = checkIfWordIsSpecialCase(inputIsValid, input);
-    if (wordIsSpecialCase) return convertSpecialCase(input);
-    return (inputIsValid)
-            ? pigLatinize(input)
-            : invalidInputMessage;
+    if (!inputIsValid) return invalidInputMessage;
+    if (wordBeginsWithSQU(input) || wordBeginsWithQU(input)) return convertSpecialCase(input);
+    return pigLatinize(input);
 };
+
+export const invalidInputMessage = 'Please enter an unhyphenated word consisting of Latin letters only.'
 
 const checkInputValidity = (input) => {
     if (typeof input !== 'string') return false;
@@ -13,43 +13,32 @@ const checkInputValidity = (input) => {
     return true;
 };
 
-const checkIfWordIsSpecialCase = (inputIsValid, word) => {
-    if (inputIsValid) {
-        const inputAsArr = word.split('');
-        if (inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u') return true;
-        if (inputAsArr[0] === 'q' && inputAsArr[1] === 'u') return true;
-    }
-    return false;
-};
-
 const convertSpecialCase = (input) => {
     const inputAsArr = input.split('');
-    if (wordBeginsWithSQU(inputAsArr)) {
+    if (wordBeginsWithSQU(input)) {
         inputAsArr.splice(0, 3);
         const clippedArr = inputAsArr.join('');
         return clippedArr + 'squay';
     }
-    if (wordBeginsWithQU(inputAsArr)) {
-        inputAsArr.splice(0, 2);
-        const clippedArr = inputAsArr.join('');
-        return clippedArr + 'quay';
-    }
+    inputAsArr.splice(0, 2);
+    const clippedArr = inputAsArr.join('');
+    return clippedArr + 'quay';
 }
 
-const wordBeginsWithSQU = (inputAsArr) => inputAsArr[0] === 's' && inputAsArr[1] === 'q' && inputAsArr[2] === 'u';
+const wordBeginsWithSQU = (str) => (str.substring(0,3) === 'squ');
 
-const wordBeginsWithQU = (inputAsArr) => inputAsArr[0] === 'q' && inputAsArr[1] === 'u';
+const wordBeginsWithQU = (str) => (str.substring(0,2) === 'qu');
 
 const inputIsWord = (input) => {
     const userInputAsArray = input.split('');
     let inputIsWord = true;
     userInputAsArray.forEach(char => {
-        if (!isCharacterALetter(char)) inputIsWord = false;
+        if (!charIsALetter(char)) inputIsWord = false;
     });
     return inputIsWord;
 };
 
-const isCharacterALetter = char => (/[a-zA-Z]/).test(char);
+const charIsALetter = char => (/[a-zA-Z]/).test(char);
 
 const pigLatinize = (input) => {
     const count = countNumberOfInitialConsonants(input.split(''));
@@ -80,9 +69,7 @@ const countNumberOfInitialConsonants = arr => {
         if (!isLetterAVowel(letter)) numberOfInitialConsonants++;
         if (isLetterAVowel(letter)) break;
     };
-   return numberOfInitialConsonants;
+    return numberOfInitialConsonants;
 };
 
-const isLetterAVowel = letter => (/[aeiou]/).test(letter);
-
-export const invalidInputMessage = 'Please enter an unhyphenated word consisting of Latin letters only.'
+const isLetterAVowel = letter => /[aeiou]/.test(letter);
