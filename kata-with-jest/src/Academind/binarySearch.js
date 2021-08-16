@@ -28,7 +28,7 @@ const getFirstHalf = (middleIndex, array) => {
 
 const getSecondHalf = (middleIndex, array) => {
   const secondHalf = [];
-  for (let i = middleIndex; i <= array[array.length - 1]; i++) {
+  for (let i = middleIndex; i < array.length; i++) {
     secondHalf.push(array[i]);
   }
   return secondHalf;
