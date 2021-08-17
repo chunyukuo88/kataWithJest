@@ -1,4 +1,4 @@
-import ipsBetween from "./ipAddresses";
+import ipsBetween from './ipAddresses';
 
 describe('ipAddresses.js', ()=>{
     describe('ipsBetween()', ()=>{

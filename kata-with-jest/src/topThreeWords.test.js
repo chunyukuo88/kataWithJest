@@ -1,4 +1,4 @@
-import { topThreeWords } from "./topThreeWords";
+import { topThreeWords } from './topThreeWords';
 
 describe('topThreeWords()', ()=>{
     describe('WHEN: Given a paragraph, ', ()=>{

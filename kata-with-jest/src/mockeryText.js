@@ -5,17 +5,16 @@
 
 export default function convertToMockeryText(inputString) {
   const inputAsArrayOfWords = inputString.split(' ');
-  const output = [];
-  inputAsArrayOfWords.forEach(word => processIndividualWord(word, output));
-  return output.join(' ');
+  return inputAsArrayOfWords
+    .map(word => processIndividualWord(word))
+    .join(' ');
 };
 
-const processIndividualWord = (word, output) => {
+const processIndividualWord = (word) => {
   const wordAsArray = capitalizeFirstLetterOfInput(word);
   const mockeryOutputAsArray = prepOutputAsArray(wordAsArray);
   capitalizeEveryOtherLetter(wordAsArray, mockeryOutputAsArray);
-  const modifiedWord = mockeryOutputAsArray.join('');
-  output.push(modifiedWord);
+  return mockeryOutputAsArray.join('');
 };
 
 const prepOutputAsArray = (inputAsArray) => {

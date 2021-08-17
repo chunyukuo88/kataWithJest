@@ -24,11 +24,9 @@ const produceUniqueWordsAndFrequencies = (arrayOfWords) => {
 const removeInvalidPunctuation = (word) => {
     const invalidPunctuation = new RegExp('[.!?/-]');
     const wordAsArray = word.split('');
-    const cleanedUpWordAsArray = [];
-    wordAsArray.forEach(char => {
-       if (!invalidPunctuation.test(char)) cleanedUpWordAsArray.push(char);
-    });
-    return cleanedUpWordAsArray.join('');
+    return wordAsArray
+      .map(char => { if (!invalidPunctuation.test(char)) return char; })
+      .join('');
 }
 
 const getWordsByFrequency = (wordsWithFreqs, numberOfUniqueWords) => {

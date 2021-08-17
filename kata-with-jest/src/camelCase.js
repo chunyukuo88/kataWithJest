@@ -25,7 +25,7 @@ export function capitalizeWordsInArray(arr){
 };
 
 export function capitalizeIndividualWord(word){
-  const firstLetter = word.slice(0, 1);
+  const firstLetter = word[0];
   const restOfTheWord = word.slice(1);
   return firstLetter.toUpperCase() + restOfTheWord;
 }

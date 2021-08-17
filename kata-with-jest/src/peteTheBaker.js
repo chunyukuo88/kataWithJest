@@ -2,14 +2,12 @@
 //https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript
 
 /** Note: The function name 'cakes' is not semantic but is required by the kata spec on Codewars. */
-export const cakes = (needs, has) => (!canMakeAtLeastOne(needs, has)) ? 0 : calculatePossibleCakes(needs, has);
+export const cakes = (needs, has) => (!canMakeAtLeastOne(needs, has))
+  ? 0
+  : calculatePossibleCakes(needs, has);
 
 export function calculatePossibleCakes(needs, has) {
-  const ratios = [];
-  Object.keys(needs).forEach(ingredient => {
-    const ratio = Math.floor((has[ingredient] / needs[ingredient]));
-    ratios.push(ratio);
-  });
+  const ratios = Object.keys(needs).map(ingredient => Math.floor((has[ingredient] / needs[ingredient])));
   return Math.min(...ratios);
 }
 
