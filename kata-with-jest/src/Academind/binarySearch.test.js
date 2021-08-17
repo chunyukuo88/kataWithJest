@@ -7,7 +7,7 @@ describe('binarySearch()', ()=>{
         const array = [ 5, 6, 7, 8, 9 ];
         const targetNumber = 7;
 
-        const result = binarySearch(array, targetNumber);
+        const result = binarySearch(array, targetNumber, 0);
 
         expect(result).toEqual(2);
       });
@@ -17,7 +17,7 @@ describe('binarySearch()', ()=>{
         const array = [ 5, 6, 7, 8, 9 ];
         const targetNumber = 8;
 
-        const result = binarySearch(array, targetNumber);
+        const result = binarySearch(array, targetNumber, 0);
 
         expect(result).toEqual(3);
       });
@@ -29,7 +29,7 @@ describe('binarySearch()', ()=>{
         const array = [ 5, 6, 7, 8, 9, 10 ];
         const targetNumber = 7;
 
-        const result = binarySearch(array, targetNumber);
+        const result = binarySearch(array, targetNumber, 0);
 
         expect(result).toEqual(2);
       });
@@ -39,7 +39,7 @@ describe('binarySearch()', ()=>{
         const array = [ 5, 6, 7, 8, 9, 10 ];
         const targetNumber = 8;
 
-        const result = binarySearch(array, targetNumber);
+        const result = binarySearch(array, targetNumber, 0);
 
         expect(result).toEqual(3);
       });
