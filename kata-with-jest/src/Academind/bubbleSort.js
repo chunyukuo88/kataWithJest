@@ -14,14 +14,14 @@ let start = 0;
 export const bubbleSort = (array) => {
   const result = _.cloneDeep(array);
 
-  if (start === (array.length - 1)) {
-    return result;
-  }
+  if (start === (array.length - 1)) return result;
 
-  for (let i = start + 1; i < array.length; i++) {
-    if (array[start] > array[i]) {
-      result[start] = array[i];
-      result[i] = array[start];
+  for (let i = start + 1; i < result.length; i++) {
+    if (result[start] > result[i]) {
+      const x = result[start];
+      const y = result[i]
+      result[start] = y;
+      result[i] = x;
     }
   }
   start++;
