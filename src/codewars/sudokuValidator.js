@@ -4,75 +4,39 @@
  * */
 
 export const determineValidity = (sudokuBoard) => {
-  if (
-      containsAZero(sudokuBoard)
-    | hasRepsInRows(sudokuBoard)
-    | hasRepsInCols(sudokuBoard)
-  ) return false;
+  if (containsAZero(sudokuBoard) | hasReps(sudokuBoard)) return false;
+  return true;
 };
 
+const hasReps = (sudokuBoard) => (hasRepsInRows(sudokuBoard) | hasRepsInCols(sudokuBoard));
+
 const hasRepsInCols = (sudokuBoard) => {
-  let hasReps = false;
   for (let i = 0; i < sudokuBoard.length - 1; i++){
     let columnValues = [];
     for (let j = 0; j < sudokuBoard.length; j++){
-      if (columnValues.includes(sudokuBoard[j][i])) {
-        return true;
-      } else {
-        columnValues.push(sudokuBoard[j][i]);
-      }
+      if (columnValues.includes(sudokuBoard[j][i])) return true;
+      columnValues.push(sudokuBoard[j][i]);
     };
   };
-  return hasReps;
+  return false;
 };
 
-const hasRepsInRows = (sudokuBoard) => {
-  let hasReps = false;
-  for (let i = 0; i < sudokuBoard.length - 1; i++){
-    const row = sudokuBoard[i];
-    if (thereAreReps(row)) {
-      hasReps = true;
-      break;
-    }
-  }
-  return hasReps;
-};
+// Determines if any of the rows has a repetition.
+const hasRepsInRows = (sudokuBoard) => sudokuBoard.every(thereAreReps);
 
+// Determines if a given row has repetitions.
 const thereAreReps = (arrayOfNums) => {
-  let hasReps = false;
   let values = [];
   for (let i = 0; i < arrayOfNums.length; i++){
-    if (values.includes(arrayOfNums[i])) {
-      hasReps = true;
-      break;
-    } else {
-      values.push(arrayOfNums[i]);
-    }
+    if (values.includes(arrayOfNums[i])) return true;
+    values.push(arrayOfNums[i]);
   };
-  return hasReps;
+  return false;
 };
 
-const containsAZero = (sudokuBoard) => {
-  let hasAZero = false;
-  for (let i = 0; i < sudokuBoard.length - 1; i++) {
-    if (innerArrayContainsZero(sudokuBoard[i])) {
-      hasAZero = true;
-      break;
-    }
-  }
-  return hasAZero;
-};
+const containsAZero = (sudokuBoard) => sudokuBoard.every(innerArrayContainsZero);
 
-const innerArrayContainsZero = (innerArray) => {
-  let containsZero = false;
-  for (let i = 0; i < innerArray.length - 1; i++){
-    if (!isNotZero(innerArray[i])) {
-      containsZero = true;
-      break;
-    }
-  };
-  return containsZero;
-}
+const innerArrayContainsZero = (innerArray) => innerArray.every(isNotZero);
 
 const isNotZero = (arrayValue) => arrayValue !== 0;
 

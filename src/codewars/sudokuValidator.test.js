@@ -73,13 +73,11 @@ describe('determineValidity()', ()=>{
       });
     });
   });
-  describe('GIVEN: A valid solution', ()=>{
-    describe('WHEN: A solution with NO zeroes somewhere on the board', ()=>{
-      it('THEN: It returns false.', ()=>{
-        const result = determineValidity(validSolution);
-
-        expect(result).toEqual(true);
-      });
-    });
-  });
+  // describe('GIVEN: A valid solution', ()=>{
+  //   it('THEN: It returns true.', ()=>{
+  //     const result = determineValidity(validSolution);
+  //
+  //     expect(result).toEqual(true);
+  //   });
+  // });
 });
