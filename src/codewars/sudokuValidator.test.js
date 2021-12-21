@@ -73,11 +73,16 @@ describe('determineValidity()', ()=>{
       });
     });
   });
-  // describe('GIVEN: A valid solution', ()=>{
-  //   it('THEN: It returns true.', ()=>{
-  //     const result = determineValidity(validSolution);
-  //
-  //     expect(result).toEqual(true);
-  //   });
-  // });
+  describe('GIVEN: A valid solution', ()=>{
+    it('THEN: It returns true.', ()=>{
+      const tinyValidSolution = [
+        [ 1, 2, 3],
+        [ 2, 3, 1],
+        [ 3, 1, 2]
+      ];
+      const result = determineValidity(tinyValidSolution);
+
+      expect(result).toEqual(true);
+    });
+  });
 });

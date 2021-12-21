@@ -4,7 +4,10 @@
  * */
 
 export const determineValidity = (sudokuBoard) => {
-  if (containsAZero(sudokuBoard) | hasReps(sudokuBoard)) return false;
+  if (
+    containsAZero(sudokuBoard)
+  | hasReps(sudokuBoard)
+  ) return false;
   return true;
 };
 
@@ -39,5 +42,3 @@ const containsAZero = (sudokuBoard) => sudokuBoard.every(innerArrayContainsZero)
 const innerArrayContainsZero = (innerArray) => innerArray.every(isNotZero);
 
 const isNotZero = (arrayValue) => arrayValue !== 0;
-
-// TODO: Explore the Array.prototype.every() function.
