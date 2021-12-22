@@ -1,8 +1,9 @@
 export const getIdTitleBoxart = (genreLists) => {
-  const listOfMovieLists = genreLists.map(genre => genre.videos);
-  const listOfMovies = listOfMovieLists.flat();
-  const targetFields = listOfMovies.map(movie => getTargetFields(movie));
-  return targetFields.map(movie => extractArtsOfCorrectWidth(movie));
+  return genreLists
+    .map(genre => genre.videos)
+    .flat()
+    .map(movie => getTargetFields(movie))
+    .map(movie => extractArtsOfCorrectWidth(movie));
 };
 
 const extractArtsOfCorrectWidth = (movie) => {
