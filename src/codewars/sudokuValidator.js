@@ -2,12 +2,8 @@
  * @param sudokuBoard: A 2D array of numbers.
  * @return {boolean} where true represents a valid solution.
  * */
-
 export const determineValidity = (sudokuBoard) => {
-  if (
-    containsAZero(sudokuBoard)
-  | hasReps(sudokuBoard)
-  ) return false;
+  if (containsAZero(sudokuBoard) | hasReps(sudokuBoard)) return false;
   return true;
 };
 
