@@ -17,3 +17,9 @@ const getTargetFields = (movie) => ({
   title: movie.title,
   boxarts: movie.boxarts
 });
+
+export const concatMap = (twoDimensionalArray) => twoDimensionalArray.flat();
+
+export const getStockPriceHistory = (arrayOfStocks, stockSymbol) => {
+  return arrayOfStocks.filter(stock => stock.name === stockSymbol);
+};
