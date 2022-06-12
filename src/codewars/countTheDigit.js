@@ -1,6 +1,6 @@
 export const nbDig = (n, d) => {
   const digit = d.toString();
-  const squares = getSquares(n);
+  const squares = getSquareNumbers(n);
   return squares
     .filter(square => square.split('').includes(digit))
     .map(square => getDigitCount(square, digit))
@@ -12,7 +12,7 @@ const getDigitCount = (squareNumber, digit) => {
   squareNumber.split('').forEach(char => (char === digit && digitCount++));
   return digitCount;
 };
-const getSquares = (n) => {
+const getSquareNumbers = (n) => {
   const squares = [];
   for (let i = 0; i < n+1; i++){
     squares.push(Math.pow(i, 2).toString());
