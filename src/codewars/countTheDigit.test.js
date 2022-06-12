@@ -1,3 +1,5 @@
+// https://www.codewars.com/kata/566fc12495810954b1000030/javascript
+
 import { nbDig } from './countTheDigit';
 
 describe('nbDig(n, d)', ()=>{
