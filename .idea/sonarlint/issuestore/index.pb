@@ -11,5 +11,7 @@ S
 #src/codewars/lifePathNumber.test.js,e/9/e9e78aec58119b17088492b843fce8e51a6350b7
 N
 src/codewars/lifePathNumber.js,a/d/ad214d2579e5e360bf7388236cb0a4c95d81aa2a
-<
-package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
+J
+src/codewars/domainName.js,b/0/b0e4b650ef2e18da6df47940066473a1a4ed4e7a
+O
+src/codewars/domainName.test.js,b/f/bf741d95215b5b588a9a463ec608e6c9a8073682
