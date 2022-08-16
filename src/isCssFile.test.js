@@ -1,22 +1,31 @@
-import { isCssFile } from './isCssFile';
+import { entityShouldBeIgnored } from './isCssFile';
 
-describe('GIVEN: isCssFile() is passed a filepath', () => {
-  describe('WHEN: the file in the path is a CSS file,', () => {
-    it('THEN: isCssFile() returns `true`.', () => {
+describe('GIVEN: entityShouldBeIgnored() is passed a filepath', () => {
+  describe('WHEN: that filepath includes a CSS file,', () => {
+    it('THEN: entityShouldBeIgnored() returns `false`.', () => {
       const entity = 'some/directory/myStyles.css';
 
-      const result = isCssFile(entity);
+      const result = entityShouldBeIgnored(entity);
+
+      expect(result).toBeFalsy();
+    });
+  });
+  describe('WHEN: that filepath does not include a CSS file,', () => {
+    it('THEN: entityShouldBeIgnored() returns `true`.', () => {
+      const entity = 'some/directory/something.md';
+
+      const result = entityShouldBeIgnored(entity);
 
       expect(result).toBeTruthy();
     });
   });
-  describe('WHEN: the file in the path is not a CSS file,', () => {
-    it('THEN: isCssFile() returns `false`.', () => {
-      const entity = 'some/directory/myStyles.jsx';
+  describe('WHEN: that filepath includes an entity that should be ignored,', () => {
+    it('THEN: entityShouldBeIgnored() returns `true`.', () => {
+      const entity = 'node_modules';
 
-      const result = isCssFile(entity);
+      const result = entityShouldBeIgnored(entity);
 
-      expect(result).toBeFalsy();
+      expect(result).toBeTruthy();
     });
   });
 });
