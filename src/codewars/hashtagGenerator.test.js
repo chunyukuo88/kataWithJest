@@ -1,3 +1,4 @@
+// https://www.codewars.com/kata/52449b062fb80683ec000024/train/javascript
 import { generateHashtag } from "./hashtagGenerator";
 
 describe('generateHashtag()', () => {
@@ -48,6 +49,16 @@ describe('generateHashtag()', () => {
       it('THEN: It adds a hashtag.', () => {
         const str = 'Word';
         const expectedResult = '#Word';
+
+        const result = generateHashtag(str);
+
+        expect(result).toEqual(expectedResult);
+      });
+    });
+    describe('WHEN: that argument is a bunch of variously capitalized words,', () => {
+      it('THEN: It removes spaces, capitalizes them all, and adds a hashtag.', () => {
+        const str = '  Fine day For some Code ';
+        const expectedResult = '#FineDayForSomeCode';
 
         const result = generateHashtag(str);
 
