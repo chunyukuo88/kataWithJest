@@ -22,3 +22,4 @@ const capitalizeFirstLetter = (str) => {
 };
 
 const invalidLength = (str) => (str.trim().length < 1 || str.length > 140);
+
