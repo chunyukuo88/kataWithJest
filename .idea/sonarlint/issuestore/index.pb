@@ -15,8 +15,6 @@ J
 src/codewars/domainName.js,b/0/b0e4b650ef2e18da6df47940066473a1a4ed4e7a
 O
 src/codewars/domainName.test.js,b/f/bf741d95215b5b588a9a463ec608e6c9a8073682
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 P
  src/codewars/hashtagGenerator.js,5/3/532f498545f3a2c0efcd2ac339265f3f392b4009
 U

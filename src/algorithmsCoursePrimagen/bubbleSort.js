@@ -9,14 +9,19 @@ function isSorted(array) {
   return sorted;
 }
 
+function updateWithSwappedValues(array, index) {
+  const [a, b] = [ array[index], array[index+1] ];
+  array[index] = b;
+  array[index+1] = a;
+  return array;
+}
+
 export function bubbleSort(unsorted, lastSortable = unsorted.length - 1){
+  if (isSorted(unsorted)) return unsorted;
   let possiblySorted = [...unsorted];
   for (let i = 0; i < possiblySorted.length; i++) {
     if (possiblySorted[i] > possiblySorted[i+1]) {
-      const a = possiblySorted[i];
-      const b = possiblySorted[i+1];
-      possiblySorted[i] = b;
-      possiblySorted[i+1] = a;
+      possiblySorted = updateWithSwappedValues(possiblySorted, i);
     }
   }
   lastSortable--;
