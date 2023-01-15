@@ -20,9 +20,7 @@ export function bubbleSort(unsorted, lastSortable = unsorted.length - 1){
     }
   }
   lastSortable--;
-  if (isSorted(possiblySorted)) {
-    return possiblySorted;
-  } else {
-    return bubbleSort(possiblySorted, lastSortable);
-  }
+  return (isSorted(possiblySorted))
+    ? possiblySorted
+    : bubbleSort(possiblySorted, lastSortable);
 }
