@@ -7,7 +7,7 @@ describe('GIVEN: ', () => {
       const sorted =   [ 1, 2, 3, 5, 8 ];
       const result = bubbleSort(unsorted);
 
-      // expect(result).toEqual(sorted);
+      expect(result).toEqual(sorted);
     });
   });
 });
