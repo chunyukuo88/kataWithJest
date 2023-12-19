@@ -1,35 +1,25 @@
-// 'iiisdoso'
+// https://www.codewars.com/kata/51e0007c1f9378fa810002a9/train/javascript
 
-function convertToInteger(stringChunk) {
-    let integer = 0;
-    stringChunk.split('').forEach(char => {
-        if (char === 'i') {
-            integer++;
-        }
-        if (char === 's') {
-            integer = Math.pow(integer, 2);
-        }
-        if (char === 'd') {
-            integer--;
-        }
-    });
-    return integer;
-}
-
-export function deadfish(string) {
+function parse(string) {
     const arr = string.split('');
 
-    let chunks = '';
-    while (arr.length > 1) {
-        chunks = (arr[0] !== 'o')
-            ? chunks + arr[0]
-            : chunks + arr[0] + ' ';
-        arr.shift();
-    }
-    
-    return chunks
-            .split(' ')
-            .map(chunk => convertToInteger(chunk));
+    let integer = 0;
+    const result = [];
+  
+    arr.forEach(char => {
+      if (char === 'i') {
+        integer = integer + 1;
+      }
+      if (char === 's') {
+        integer = Math.pow(integer, 2);
+      }
+      if (char === 'd') {
+        integer = integer - 1;
+      }
+      if (char === 'o') {
+        result.push(integer);
+      }
+    });
+  
+    return result;
 }
-
-console.log(deadfish('iiisdoiiso'));
