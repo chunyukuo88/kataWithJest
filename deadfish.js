@@ -1,9 +1,8 @@
 // 'iiisdoso'
 
 function convertToInteger(stringChunk) {
-    const arr = stringChunk.split('');
     let integer = 0;
-    arr.forEach(char => {
+    stringChunk.split('').forEach(char => {
         if (char === 'i') {
             integer++;
         }
@@ -21,12 +20,10 @@ export function deadfish(string) {
     const arr = string.split('');
 
     let chunks = '';
-    while (arr.length > 0) {
-        if (arr[0] !== 'o') {
-            chunks = chunks + arr[0];
-        } else {
-            chunks += arr[0] + ' ';
-        }
+    while (arr.length > 1) {
+        chunks = (arr[0] !== 'o')
+            ? chunks + arr[0]
+            : chunks + arr[0] + ' ';
         arr.shift();
     }
     
